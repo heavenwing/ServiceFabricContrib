@@ -12,6 +12,8 @@
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>servicefabric owin</PackageTags>
+    <AssemblyName>ServiceFabricContrib.OwinCommunicationListener</AssemblyName>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
