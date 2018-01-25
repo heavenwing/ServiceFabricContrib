@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinCommunicationListener", "src\OwinCommunicationListener\OwinCommunicationListener.csproj", "{067627F0-A59B-4A9C-BAFB-73D027845448}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{067627F0-A59B-4A9C-BAFB-73D027845448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{067627F0-A59B-4A9C-BAFB-73D027845448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{067627F0-A59B-4A9C-BAFB-73D027845448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{067627F0-A59B-4A9C-BAFB-73D027845448}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C38CE474-CD25-442F-B6A6-CE0EB2E78622}
+	EndGlobalSection
+EndGlobal
