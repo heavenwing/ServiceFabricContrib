@@ -11,6 +11,7 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageTags>servicefabric owin</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
