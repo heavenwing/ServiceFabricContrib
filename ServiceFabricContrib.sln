@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OwinCommunicationListener", "src\OwinCommunicationListener\OwinCommunicationListener.csproj", "{067627F0-A59B-4A9C-BAFB-73D027845448}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationProvider", "src\ConfigurationProvider\ConfigurationProvider.csproj", "{53CF773B-D3A1-4B49-9B87-29264DE96475}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfigurationProvider", "src\ConfigurationProvider\ConfigurationProvider.csproj", "{53CF773B-D3A1-4B49-9B87-29264DE96475}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "src\Common\Common.csproj", "{FB7E1CBA-E880-48B2-ADEB-919A48449459}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTransitListener", "src\MassTransitListener\MassTransitListener.csproj", "{868B4DF1-2280-421F-89A0-777B950770D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{53CF773B-D3A1-4B49-9B87-29264DE96475}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53CF773B-D3A1-4B49-9B87-29264DE96475}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53CF773B-D3A1-4B49-9B87-29264DE96475}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB7E1CBA-E880-48B2-ADEB-919A48449459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB7E1CBA-E880-48B2-ADEB-919A48449459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB7E1CBA-E880-48B2-ADEB-919A48449459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB7E1CBA-E880-48B2-ADEB-919A48449459}.Release|Any CPU.Build.0 = Release|Any CPU
+		{868B4DF1-2280-421F-89A0-777B950770D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{868B4DF1-2280-421F-89A0-777B950770D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{868B4DF1-2280-421F-89A0-777B950770D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{868B4DF1-2280-421F-89A0-777B950770D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
