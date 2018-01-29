@@ -10,7 +10,7 @@ namespace ServiceFabricContrib
 {
     //ref: https://stackoverflow.com/a/38279820/377727
 
-    public interface IActorServiceEx : IService
+    public interface IActorServiceEx : IActorService
     {
         Task<bool> ActorExistsAsync(ActorId actorId, CancellationToken cancellationToken = default(CancellationToken));
     }
