@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
     <RootNamespace>ServiceFabricContrib</RootNamespace>
     <PackageId>ServiceFabricContrib.OwinCommunicationListener</PackageId>
     <Authors>heavenwing</Authors>
@@ -13,7 +13,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>servicefabric owin</PackageTags>
     <AssemblyName>ServiceFabricContrib.OwinCommunicationListener</AssemblyName>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <PackageReleaseNotes>using Service Fabric v3.0</PackageReleaseNotes>
   </PropertyGroup>
 
