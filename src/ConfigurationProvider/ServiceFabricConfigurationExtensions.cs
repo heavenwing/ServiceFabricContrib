@@ -47,5 +47,34 @@ namespace ServiceFabricContrib
 
             return builder;
         }
+
+        /// <summary>
+        /// 添加JsonFile、UserSecrets、EnvironmentVariables配置
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
+        public static IWebHostBuilder UseCommonConfiguration(this IWebHostBuilder builder)
+        {
+            builder.ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var env = hostingContext.HostingEnvironment;
+
+                config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+
+                if (env.IsDevelopment())
+                {
+                    var appAssembly = Assembly.Load(new AssemblyName(env.ApplicationName));
+                    if (appAssembly != null)
+                    {
+                        config.AddUserSecrets(appAssembly, optional: true);
+                    }
+                }
+
+                config.AddEnvironmentVariables();
+            });
+
+            return builder;
+        }
     }
 }
