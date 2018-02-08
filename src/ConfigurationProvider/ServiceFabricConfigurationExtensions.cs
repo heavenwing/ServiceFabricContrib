@@ -10,6 +10,23 @@ namespace ServiceFabricContrib
 {
     public static class ServiceFabricConfigurationExtensions
     {
+        public static T GetOption<T>(this ServiceContext serviceContext, string sectionName, string configName = "Config")
+            where T : class, new()
+        {
+            var config = serviceContext.CodePackageActivationContext.GetConfigurationPackageObject(configName);
+            var configSection = config.Settings.Sections[sectionName];
+            var option = Activator.CreateInstance<T>();
+            foreach (var parameter in configSection.Parameters)
+            {
+                var property = option.GetType().GetProperty(parameter.Name);
+                if (property != null)
+                {
+                    property.SetValue(option, Convert.ChangeType(parameter.Value, property.PropertyType), null);
+                }
+            }
+            return option;
+        }
+
         public static IConfigurationBuilder AddServiceFabricConfiguration(this IConfigurationBuilder builder,
             ServiceContext serviceContext, string configPackageName = "Config")
         {
