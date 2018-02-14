@@ -1,6 +1,7 @@
 ﻿using Microsoft.ServiceFabric.Services.Remoting.V2;
 using Microsoft.ServiceFabric.Services.Remoting.V2.Messaging;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +20,7 @@ namespace ServiceFabricContrib
 
         public object Get(Type paramType)
         {
-            return JsonConvert.DeserializeObject(Value.ToString(), paramType);
+            return BsonSerializationProvider.TryDeserializeObject(Value, paramType);
         }
     }
 }

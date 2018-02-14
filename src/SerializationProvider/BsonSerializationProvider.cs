@@ -1,5 +1,6 @@
 ﻿using Microsoft.ServiceFabric.Services.Remoting.V2;
 using Microsoft.ServiceFabric.Services.Remoting.V2.Messaging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,6 +25,30 @@ namespace ServiceFabricContrib
         public IServiceRemotingMessageBodyFactory CreateMessageBodyFactory()
         {
             return new BsonRemotingMessageBodyFactory();
+        }
+
+        public static object TryDeserializeObject(object value,Type valueType)
+        {
+            var str = value.ToString();
+            if (valueType == typeof(bool) && (str == "F" || str == "T"))
+                return str == "T";
+            object result;
+            try
+            {
+                result= JsonConvert.DeserializeObject(str, valueType);
+            }
+            catch
+            {
+                try
+                {
+                    result = Convert.ChangeType(value, valueType);
+                }
+                catch
+                {
+                    throw;
+                }
+            }
+            return result;
         }
     }
 }

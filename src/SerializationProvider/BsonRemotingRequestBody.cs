@@ -19,8 +19,7 @@ namespace ServiceFabricContrib
 
         public object GetParameter(int position, string parameName, Type paramType)
         {
-            var value = Parameters[parameName].ToString();
-            return JsonConvert.DeserializeObject(value, paramType);
+            return BsonSerializationProvider.TryDeserializeObject(Parameters[parameName], paramType);
         }
     }
 }
