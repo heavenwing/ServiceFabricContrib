@@ -29,7 +29,8 @@ namespace ServiceFabricContrib
 
         public static object TryDeserializeObject(object value,Type valueType)
         {
-            var str = value.ToString();
+            var str = value?.ToString();
+            if (string.IsNullOrEmpty(str)) return null;
             if (valueType == typeof(bool) && (str == "F" || str == "T"))
                 return str == "T";
             object result;
