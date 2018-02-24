@@ -11,11 +11,12 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric masstransit</PackageTags>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MassTransit" Version="4.0.1" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.0.456" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.0.467" />
   </ItemGroup>
 
 </Project>
