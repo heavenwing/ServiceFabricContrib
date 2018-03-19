@@ -13,11 +13,16 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric serialization</PackageTags>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
+    <PackageReleaseNotes>using Service Fabric v3.0.472</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\ServiceFabricContrib.SerializationProvider.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.ServiceFabric.Services.Remoting" Version="3.0.467" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services.Remoting" Version="3.0.472" />
     <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.1" />
   </ItemGroup>
 

@@ -12,17 +12,21 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <PackageTags>servicefabric configuration</PackageTags>
     <Description>service fabric configuration provider for .NET Core</Description>
-    <Version>1.0.5</Version>
-    <PackageReleaseNotes>using Service Fabric v3.0.467</PackageReleaseNotes>
+    <Version>1.0.6</Version>
+    <PackageReleaseNotes>using Service Fabric v3.0.472</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\ServiceFabricContrib.ConfigurationProvider.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="microsoft.aspnetcore.hosting.abstractions" Version="2.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.0" />
-    <PackageReference Include="Microsoft.ServiceFabric" Version="6.1.467" />
+    <PackageReference Include="microsoft.aspnetcore.hosting.abstractions" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.1" />
+    <PackageReference Include="Microsoft.ServiceFabric" Version="6.1.472" />
   </ItemGroup>
 
 </Project>

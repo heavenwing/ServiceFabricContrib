@@ -11,12 +11,17 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric masstransit</PackageTags>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
+    <PackageReleaseNotes>using Service Fabric v3.0.472</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\ServiceFabricContrib.MassTransitListener.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MassTransit" Version="4.0.1" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.0.467" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.0.472" />
   </ItemGroup>
 
 </Project>
