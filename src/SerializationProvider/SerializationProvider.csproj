@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <RootNamespace>ServiceFabricContrib</RootNamespace>
     <AssemblyName>ServiceFabricContrib.SerializationProvider</AssemblyName>
     <Authors>heavenwing</Authors>
@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric serialization</PackageTags>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <PackageReleaseNotes>using Service Fabric v3.0.472</PackageReleaseNotes>
   </PropertyGroup>
 

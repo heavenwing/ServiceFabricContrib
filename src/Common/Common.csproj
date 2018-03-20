@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <RootNamespace>ServiceFabricContrib</RootNamespace>
     <AssemblyName>ServiceFabricContrib.Common</AssemblyName>
     <Authors>heavenwing</Authors>
@@ -12,7 +12,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.11</Version>
+    <Version>1.0.12</Version>
     <PackageReleaseNotes>using Service Fabric v3.0.472</PackageReleaseNotes>
   </PropertyGroup>
 
