@@ -12,8 +12,8 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <PackageTags>servicefabric configuration</PackageTags>
     <Description>service fabric configuration provider for .NET Core</Description>
-    <Version>1.0.7</Version>
-    <PackageReleaseNotes>using Service Fabric v3.0.472</PackageReleaseNotes>
+    <Version>1.0.8</Version>
+    <PackageReleaseNotes>using Service Fabric v3.0.480</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -26,7 +26,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.1" />
-    <PackageReference Include="Microsoft.ServiceFabric" Version="6.1.472" />
+    <PackageReference Include="Microsoft.ServiceFabric" Version="6.1.480" />
   </ItemGroup>
 
 </Project>
