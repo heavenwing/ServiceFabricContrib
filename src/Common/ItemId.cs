@@ -9,6 +9,10 @@ namespace ServiceFabricContrib
     using System.Runtime.Serialization;
     using Microsoft.ServiceFabric.Services.Client;
 
+    /// <summary>
+    /// Entity's Id of Stateful Service, use Guid inside, and can provide ServicePartitionKey
+    /// </summary>
+    [Serializable]
     [DataContract]
     public class ItemId : IFormattable, IComparable, IComparable<ItemId>, IEquatable<ItemId>
     {
