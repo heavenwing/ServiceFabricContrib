@@ -27,7 +27,7 @@ namespace ServiceFabricContrib
         {
             this.id = guid;
         }
-        
+
         public int CompareTo(object obj)
         {
             return this.id.CompareTo(((ItemId)obj).id);
@@ -51,16 +51,6 @@ namespace ServiceFabricContrib
         public ServicePartitionKey GetPartitionKey()
         {
             return new ServicePartitionKey(HashUtil.getLongHashCode(this.id.ToString()));
-        }
-
-        public static bool operator ==(ItemId item1, ItemId item2)
-        {
-            return item1.Equals(item2);
-        }
-
-        public static bool operator !=(ItemId item1, ItemId item2)
-        {
-            return !item1.Equals(item2);
         }
 
         public override bool Equals(object obj)
