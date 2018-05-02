@@ -40,7 +40,7 @@ namespace SampleState
         {
             try
             {
-                ServiceEventSource.Current.ServiceMessage(Context, "inside RunAsync for Inventory Service");
+                ServiceEventSource.Current.ServiceMessage(Context, "inside RunAsync for SampleState Service");
 
                 return Task.WhenAll(
                     this.PeriodicCounter(cancellationToken),
@@ -182,9 +182,16 @@ namespace SampleState
                 ServiceEventSource.Current.ServiceMessage(Context, "Archive of backup failed: Source: {0} Exception: {1}", backupInfo.Directory, e.Message);
             }
 
-            await this.backupManager.DeleteBackupsAsync(cancellationToken);
-
-            ServiceEventSource.Current.Message("Backups deleted");
+            try
+            {
+                ServiceEventSource.Current.ServiceMessage(Context, "Deleting backups");
+                await this.backupManager.DeleteBackupsAsync(cancellationToken);
+                ServiceEventSource.Current.ServiceMessage(Context, "Backups deleted");
+            }
+            catch (Exception e)
+            {
+                ServiceEventSource.Current.ServiceMessage(Context, "Delete of backup failed: Exception: {1}", e.Message);
+            }
 
             return true;
         }

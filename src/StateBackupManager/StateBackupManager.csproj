@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
-    <AssemblyName>ServiceFabricContrib.BackupManager</AssemblyName>
+    <AssemblyName>ServiceFabricContrib.StateBackupManager</AssemblyName>
     <RootNamespace>ServiceFabricContrib</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>heavenwing</Authors>

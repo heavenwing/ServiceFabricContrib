@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CB66F2F7-0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "test\UnitTest\UnitTest.csproj", "{0322EC00-5860-4887-98BC-CDB5A286832E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackupManager", "src\BackupManager\BackupManager.csproj", "{D83BD687-A9A5-4A75-A060-CD004819B422}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StateBackupManager", "src\StateBackupManager\StateBackupManager.csproj", "{D83BD687-A9A5-4A75-A060-CD004819B422}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleState", "sample\SampleState\SampleState.csproj", "{76ED66CF-0355-46BE-BFA9-77D8DEF85267}"
 EndProject
