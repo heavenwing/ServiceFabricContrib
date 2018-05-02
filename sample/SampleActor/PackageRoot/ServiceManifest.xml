@@ -10,7 +10,7 @@
             <ReplicatorConfigSection Name="SampleActorServiceReplicatorConfig" />
             <ReplicatorSecurityConfigSection Name="SampleActorServiceReplicatorSecurityConfig" />
             <StoreConfigSection Name="SampleActorServiceLocalStoreConfig" />
-            <ServiceEndpoint Name="SampleActorServiceEndpoint" />
+            <ServiceEndpointV2 Name="SampleActorServiceEndpointV2" />
           </GeneratedNames>
         </Extension>
       </Extensions>
@@ -28,7 +28,6 @@
     <Endpoints>
       <Endpoint Name="SampleActorServiceEndpointV2" />
       <Endpoint Name="SampleActorServiceReplicatorEndpoint" />
-      <Endpoint Name="SampleActorServiceEndpoint" />
     </Endpoints>
   </Resources>
   <!-- The content will be generated during build -->
