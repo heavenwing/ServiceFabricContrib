@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿#if NETSTANDARD2_0
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Fabric;
@@ -27,8 +29,9 @@ namespace ServiceFabricContrib
             return option;
         }
 
+#if NETSTANDARD2_0
         public static IConfigurationBuilder AddServiceFabricConfiguration(this IConfigurationBuilder builder,
-            ServiceContext serviceContext, string configPackageName = "Config")
+           ServiceContext serviceContext, string configPackageName = "Config")
         {
             builder.Add(new ServiceFabricConfigurationSource(serviceContext, configPackageName));
             return builder;
@@ -93,5 +96,6 @@ namespace ServiceFabricContrib
 
             return builder;
         }
+#endif
     }
 }

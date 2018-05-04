@@ -1,8 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
-using System.Fabric;
+﻿
 
 namespace ServiceFabricContrib
 {
+#if NETSTANDARD2_0
+    using Microsoft.Extensions.Configuration;
+    using System.Fabric;
+
     public class ServiceFabricConfigurationSource : IConfigurationSource
     {
         private readonly ServiceContext serviceContext;
@@ -19,5 +22,5 @@ namespace ServiceFabricContrib
             return new ServiceFabricConfigurationProvider(serviceContext, _configPackageName);
         }
     }
-
+#endif
 }

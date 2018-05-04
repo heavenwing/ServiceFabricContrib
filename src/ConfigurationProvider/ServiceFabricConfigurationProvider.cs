@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
-using System.Fabric;
-
-namespace ServiceFabricContrib
+﻿namespace ServiceFabricContrib
 {
+#if NETSTANDARD2_0
+
+    using Microsoft.Extensions.Configuration;
+    using System.Fabric;
+
     public class ServiceFabricConfigurationProvider : ConfigurationProvider
     {
         private readonly ServiceContext serviceContext;
@@ -26,4 +28,5 @@ namespace ServiceFabricContrib
             }
         }
     }
+#endif
 }

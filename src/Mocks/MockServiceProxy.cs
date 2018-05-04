@@ -9,7 +9,6 @@ namespace ServiceFabricContrib
     using Microsoft.ServiceFabric.Services.Communication.Client;
     using Microsoft.ServiceFabric.Services.Remoting;
     using Microsoft.ServiceFabric.Services.Remoting.Client;
-    using Microsoft.ServiceFabric.Services.Remoting.V2.Client;
     using System;
     using System.Collections.Generic;
 
@@ -18,8 +17,10 @@ namespace ServiceFabricContrib
         private IDictionary<Type, Func<Uri, object>> createFunctions = new Dictionary<Type, Func<Uri, object>>();
 
         public Type ServiceInterfaceType { get; private set; }
-
-        public IServiceRemotingPartitionClient ServicePartitionClient2 { get; private set; }
+#if NET452
+        public Microsoft.ServiceFabric.Services.Remoting.V1.Client.IServiceRemotingPartitionClient ServicePartitionClient { get; private set; }
+#endif
+        public Microsoft.ServiceFabric.Services.Remoting.V2.Client.IServiceRemotingPartitionClient ServicePartitionClient2 { get; private set; }
 
 
         public TServiceInterface Create<TServiceInterface>(Uri serviceName) where TServiceInterface : IService

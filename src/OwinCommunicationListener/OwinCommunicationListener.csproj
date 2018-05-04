@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>net452</TargetFramework>
     <RootNamespace>ServiceFabricContrib</RootNamespace>
     <PackageId>ServiceFabricContrib.OwinCommunicationListener</PackageId>
     <Authors>heavenwing</Authors>
