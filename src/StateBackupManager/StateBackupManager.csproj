@@ -11,11 +11,7 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric</PackageTags>
-    <Configurations>Debug;Release;Release_NET461</Configurations>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release_NET461|netstandard2.0|AnyCPU'">
-    <DefineConstants>TRACE;RELEASE_NET461</DefineConstants>
+    <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
