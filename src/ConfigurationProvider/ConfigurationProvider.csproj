@@ -12,8 +12,9 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <PackageTags>servicefabric configuration</PackageTags>
     <Description>service fabric configuration provider for .NET Core</Description>
-    <Version>1.0.8</Version>
-    <PackageReleaseNotes>using Service Fabric v3.0.480</PackageReleaseNotes>
+    <Version>1.0.9</Version>
+    <PackageReleaseNotes>1.0.9 upgrade nuget of asp.net core
+1.0.8 using Service Fabric v3.0.480</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -25,10 +26,10 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.2" />
   </ItemGroup>
 </Project>
