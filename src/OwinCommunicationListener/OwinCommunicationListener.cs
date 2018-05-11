@@ -32,7 +32,7 @@ namespace ServiceFabricContrib
 
         public Task<string> OpenAsync(CancellationToken cancellationToken)
         {
-            Trace.WriteLine("Initialize");
+            Trace.TraceInformation("Initialize OwinCommunicationListener");
 
             var serviceEndpoint = this._serviceContext.CodePackageActivationContext.GetEndpoint("ServiceEndpoint");
             var port = serviceEndpoint.Port;
@@ -71,11 +71,11 @@ namespace ServiceFabricContrib
 
             _publishAddress = _listeningAddress.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
 
-            Trace.WriteLine($"Opening on {_publishAddress}");
+            Trace.TraceInformation($"Opening on {_publishAddress}");
 
             try
             {
-                Trace.WriteLine($"Starting web server on {_listeningAddress}");
+                Trace.TraceInformation($"Starting web server on {_listeningAddress}");
 
                 _serverHandle = WebApp.Start(_listeningAddress, _startup.Configuration);
 
@@ -83,7 +83,7 @@ namespace ServiceFabricContrib
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                Trace.TraceError(ex.Message);
 
                 StopWebServer();
 
@@ -93,7 +93,7 @@ namespace ServiceFabricContrib
 
         public Task CloseAsync(CancellationToken cancellationToken)
         {
-            Trace.WriteLine("Close");
+            Trace.TraceInformation("Close OwinCommunicationListener");
 
             StopWebServer();
 
@@ -102,7 +102,7 @@ namespace ServiceFabricContrib
 
         public void Abort()
         {
-            Trace.WriteLine("Abort");
+            Trace.TraceInformation("Abort OwinCommunicationListener");
 
             StopWebServer();
         }
