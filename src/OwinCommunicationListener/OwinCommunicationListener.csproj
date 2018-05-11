@@ -13,7 +13,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>servicefabric owin</PackageTags>
     <AssemblyName>ServiceFabricContrib.OwinCommunicationListener</AssemblyName>
-    <Version>1.0.6</Version>
+    <Version>1.0.7</Version>
     <PackageReleaseNotes>using Service Fabric v3.0.480</PackageReleaseNotes>
   </PropertyGroup>
 
