@@ -4,7 +4,9 @@ using Microsoft.Extensions.Configuration;
 #endif
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Fabric;
+using System.Fabric.Description;
 using System.Reflection;
 using System.Text;
 
@@ -15,18 +17,67 @@ namespace ServiceFabricContrib
         public static T GetOption<T>(this ServiceContext serviceContext, string sectionName, string configName = "Config")
             where T : class, new()
         {
+            if (sectionName == null)
+                throw new ArgumentNullException(nameof(sectionName));
+            if (configName == null)
+                throw new ArgumentNullException(nameof(configName));
+
             var config = serviceContext.CodePackageActivationContext.GetConfigurationPackageObject(configName);
             var configSection = config.Settings.Sections[sectionName];
             var option = Activator.CreateInstance<T>();
             foreach (var parameter in configSection.Parameters)
             {
                 var property = option.GetType().GetProperty(parameter.Name);
-                if (property != null)
+                if (property != null && property.CanWrite)
                 {
-                    property.SetValue(option, Convert.ChangeType(parameter.Value, property.PropertyType), null);
+
+                    if (property.PropertyType.IsEnum)
+                    {
+                        var value = Enum.Parse(property.PropertyType, parameter.Value);
+                        property.SetValue(option, Convert.ChangeType(value, property.PropertyType));
+                    }
+                    else
+                    {
+                        try
+                        {
+                            property.SetValue(option, Convert.ChangeType(parameter.Value, property.PropertyType));
+                        }
+                        catch
+                        {
+                            //nothing
+                        }
+                    }
                 }
             }
             return option;
+        }
+
+        public static KeyedCollection<string, ConfigurationProperty> GetParameters(this ServiceContext serviceContext, string sectionName, string configName = "Config")
+        {
+            if (sectionName == null)
+                throw new ArgumentNullException(nameof(sectionName));
+            if (configName == null)
+                throw new ArgumentNullException(nameof(configName));
+
+            var config = serviceContext.CodePackageActivationContext.GetConfigurationPackageObject(configName);
+            var configSection = config.Settings.Sections[sectionName];
+            return configSection.Parameters;
+        }
+
+        public static string GetParameterValue<T>(this ServiceContext serviceContext, string sectionName, string parameterName, string configName = "Config")
+        {
+            if (sectionName == null)
+                throw new ArgumentNullException(nameof(sectionName));
+            if (parameterName == null)
+                throw new ArgumentNullException(nameof(parameterName));
+            if (configName == null)
+                throw new ArgumentNullException(nameof(configName));
+
+            var config = serviceContext.CodePackageActivationContext.GetConfigurationPackageObject(configName);
+            var configSection = config.Settings.Sections[sectionName];
+            if (configSection.Parameters.Contains(parameterName))
+                return configSection.Parameters[parameterName].Value;
+            return null;
         }
 
 #if NETSTANDARD2_0
