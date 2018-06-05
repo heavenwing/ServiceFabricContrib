@@ -11,8 +11,9 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric masstransit</PackageTags>
-    <Version>1.0.7</Version>
-    <PackageReleaseNotes>1.0.7 using Service Fabric v3.1.274
+    <Version>1.0.8</Version>
+    <PackageReleaseNotes>1.0.8 using Service Fabric v3.1.283
+1.0.7 using Service Fabric v3.1.274
 1.0.6 using Service Fabric v3.1.269
 1.0.5 upgrade to MassTransit 5.0.2
 1.0.4 using Service Fabric v3.0.480</PackageReleaseNotes>
@@ -23,8 +24,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit" Version="5.1.0" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.1.274" />
+    <PackageReference Include="MassTransit" Version="5.1.2" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.1.283" />
   </ItemGroup>
 
 </Project>
