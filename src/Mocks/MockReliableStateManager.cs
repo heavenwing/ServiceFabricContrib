@@ -3,6 +3,8 @@
 //  Licensed under the MIT License (MIT). See License.txt in the repo root for license information.
 // ------------------------------------------------------------
 
+using Mocks;
+
 namespace ServiceFabricContrib
 {
     using Microsoft.ServiceFabric.Data;
@@ -22,8 +24,10 @@ namespace ServiceFabricContrib
 
         private Dictionary<Type, Type> dependencyMap = new Dictionary<Type, Type>()
         {
+            {typeof(IReliableDictionary2<,>),typeof(MockReliableDictionary2<,>)},
             {typeof(IReliableDictionary<,>), typeof(MockReliableDictionary<,>)},
-            {typeof(IReliableQueue<>), typeof(MockReliableQueue<>)}
+            {typeof(IReliableQueue<>), typeof(MockReliableQueue<>)},
+            {typeof(IReliableConcurrentQueue<>),typeof(MockReliableConcurrentQueue<>)}
         };
 
         public Func<CancellationToken, Task<bool>> OnDataLossAsync
