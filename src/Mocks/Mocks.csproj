@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
@@ -11,8 +11,9 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric mock</PackageTags>
-    <Version>1.0.4</Version>
-    <PackageReleaseNotes>1.0.4 using Service Fabric v3.1.283
+    <Version>1.0.5</Version>
+    <PackageReleaseNotes>1.0.5 add more mock type
+1.0.4 using Service Fabric v3.1.283
 1.0.3 using Service Fabric v3.1.274
 1.0.2 using Service Fabric v3.1.269
 1.0.1 using Service Fabric v3.0.480</PackageReleaseNotes>
