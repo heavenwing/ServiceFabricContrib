@@ -11,7 +11,7 @@ namespace ServiceFabricContrib
 {
     public class BsonResponseMessageBodySerializer : IServiceRemotingResponseMessageBodySerializer
     {
-        public OutgoingMessageBody Serialize(IServiceRemotingResponseMessageBody serviceRemotingRequestMessageBody)
+        public IOutgoingMessageBody Serialize(IServiceRemotingResponseMessageBody serviceRemotingRequestMessageBody)
         {
             if (serviceRemotingRequestMessageBody == null) return null;
 
@@ -27,7 +27,7 @@ namespace ServiceFabricContrib
             }
         }
 
-        public IServiceRemotingResponseMessageBody Deserialize(IncomingMessageBody messageBody)
+        public IServiceRemotingResponseMessageBody Deserialize(IIncomingMessageBody messageBody)
         {
             var reader = new BsonDataReader(messageBody.GetReceivedBuffer());
             var serializer = new JsonSerializer();

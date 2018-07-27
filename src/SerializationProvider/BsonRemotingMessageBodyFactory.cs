@@ -13,9 +13,19 @@ namespace ServiceFabricContrib
             return new BsonRemotingRequestBody();
         }
 
+        public IServiceRemotingRequestMessageBody CreateRequest(string interfaceName, string methodName, int numberOfParameters, object wrappedRequestObject)
+        {
+            throw new NotImplementedException();
+        }
+
         public IServiceRemotingResponseMessageBody CreateResponse(string interfaceName, string methodName)
         {
             return new BsonRemotingResponseBody();
+        }
+
+        public IServiceRemotingResponseMessageBody CreateResponse(string interfaceName, string methodName, object wrappedResponseObject)
+        {
+            throw new NotImplementedException();
         }
     }
 }

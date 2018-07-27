@@ -11,13 +11,13 @@ namespace ServiceFabricContrib
     public class BsonSerializationProvider : IServiceRemotingMessageSerializationProvider
     {
         public IServiceRemotingRequestMessageBodySerializer CreateRequestMessageSerializer(Type serviceInterfaceType,
-            IEnumerable<Type> requestBodyTypes)
+            IEnumerable<Type> requestWrappedTypes, IEnumerable<Type> requestBodyTypes = null)
         {
             return new BsonRequestMessageBodySerializer();
         }
 
         public IServiceRemotingResponseMessageBodySerializer CreateResponseMessageSerializer(Type serviceInterfaceType,
-            IEnumerable<Type> responseBodyTypes)
+            IEnumerable<Type> responseWrappedTypes, IEnumerable<Type> responseBodyTypes = null)
         {
             return new BsonResponseMessageBodySerializer();
         }

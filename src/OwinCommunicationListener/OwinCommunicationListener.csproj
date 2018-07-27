@@ -13,8 +13,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>servicefabric owin</PackageTags>
     <AssemblyName>ServiceFabricContrib.OwinCommunicationListener</AssemblyName>
-    <Version>1.0.11</Version>
-    <PackageReleaseNotes>using Service Fabric v3.1.301</PackageReleaseNotes>
+    <Version>1.0.12</Version>
+    <PackageReleaseNotes>using Service Fabric v3.2.162</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Owin.Hosting" Version="4.0.0" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.1.301" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.2.162" />
     <PackageReference Include="Owin" Version="1.0.0" />
   </ItemGroup>
 
