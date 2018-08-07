@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ContribSample.Contracts;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.ServiceFabric.Services.Remoting.Client;
+using Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client;
 using ServiceFabricContrib;
 
 namespace SampleWeb.Pages
@@ -21,9 +22,18 @@ namespace SampleWeb.Pages
 
             var builder = new ServiceUriBuilder("SampleState");
 
-            var proxy = ServiceProxy.Create<ISampleRemotingService>(builder.ToUri());
+            //use native serialization
+            //var proxy = ServiceProxy.Create<ISampleRemotingService>(builder.ToUri());
 
-            Peoples = await proxy.GetPeoplesAsync();
+            //use bson serialization
+            var proxyFactory = new ServiceProxyFactory((c) =>
+            {
+                return new FabricTransportServiceRemotingClientFactory(
+                    serializationProvider: new BsonSerializationProvider());
+            });
+            var proxy = proxyFactory.CreateServiceProxy<ISampleRemotingService>(builder.ToUri());
+
+            Peoples = await proxy.GetPeoplesAsync(new FilterDto { Search = "abc", Page = 5 });
         }
     }
 }

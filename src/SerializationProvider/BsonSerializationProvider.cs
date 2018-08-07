@@ -10,6 +10,11 @@ namespace ServiceFabricContrib
 {
     public class BsonSerializationProvider : IServiceRemotingMessageSerializationProvider
     {
+        public IServiceRemotingMessageBodyFactory CreateMessageBodyFactory()
+        {
+            return new BsonRemotingBodyFactory();
+        }
+
         public IServiceRemotingRequestMessageBodySerializer CreateRequestMessageSerializer(Type serviceInterfaceType,
             IEnumerable<Type> requestWrappedTypes, IEnumerable<Type> requestBodyTypes = null)
         {
@@ -20,11 +25,6 @@ namespace ServiceFabricContrib
             IEnumerable<Type> responseWrappedTypes, IEnumerable<Type> responseBodyTypes = null)
         {
             return new BsonResponseMessageBodySerializer();
-        }
-
-        public IServiceRemotingMessageBodyFactory CreateMessageBodyFactory()
-        {
-            return new BsonRemotingMessageBodyFactory();
         }
 
         public static object TryDeserializeObject(object value,Type valueType)

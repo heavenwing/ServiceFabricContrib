@@ -11,27 +11,41 @@ namespace ServiceFabricContrib
 {
     public class BsonResponseMessageBodySerializer : IServiceRemotingResponseMessageBodySerializer
     {
-        public IOutgoingMessageBody Serialize(IServiceRemotingResponseMessageBody serviceRemotingRequestMessageBody)
+        private JsonSerializer serializer;
+
+        public BsonResponseMessageBodySerializer()
         {
-            if (serviceRemotingRequestMessageBody == null) return null;
+            serializer = new JsonSerializer();
+            //JsonSerializer.Create(new JsonSerializerSettings()
+            //{
+            //    TypeNameHandling = TypeNameHandling.All
+            //});
+        }
+
+        public IOutgoingMessageBody Serialize(IServiceRemotingResponseMessageBody serviceRemotingResponseMessageBody)
+        {
+            if (serviceRemotingResponseMessageBody == null) return null;
 
             using (var ms = new MemoryStream())
             {
-                var writer = new BsonDataWriter(ms);
-                var serializer = new JsonSerializer();
-                serializer.Serialize(writer, serviceRemotingRequestMessageBody);
+                using (var writer = new BsonDataWriter(ms))
+                {
+                    serializer.Serialize(writer, serviceRemotingResponseMessageBody);
+                    writer.Flush();
 
-                var segment = new ArraySegment<byte>(ms.ToArray());
-                var segments = new List<ArraySegment<byte>> { segment };
-                return new OutgoingMessageBody(segments);
+                    var segment = new ArraySegment<byte>(ms.ToArray());
+                    var segments = new List<ArraySegment<byte>> { segment };
+                    return new OutgoingMessageBody(segments);
+                }
             }
         }
 
         public IServiceRemotingResponseMessageBody Deserialize(IIncomingMessageBody messageBody)
         {
-            var reader = new BsonDataReader(messageBody.GetReceivedBuffer());
-            var serializer = new JsonSerializer();
-            return serializer.Deserialize<BsonRemotingResponseBody>(reader);
+            using (var reader = new BsonDataReader(messageBody.GetReceivedBuffer()))
+            {
+                return serializer.Deserialize<BsonRemotingResponseBody>(reader);
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ using Microsoft.ServiceFabric.Services.Runtime;
 using ServiceFabricContrib;
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting;
+using Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime;
 
 namespace SampleState
 {
@@ -27,8 +28,11 @@ namespace SampleState
             : base(context)
         { }
 
-        public Task<List<PeopleDto>> GetPeoplesAsync()
+        public Task<List<PeopleDto>> GetPeoplesAsync(FilterDto input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             return Task.FromResult(new List<PeopleDto>
             {
                 new PeopleDto{Name ="abc",Age =1,Toys=new List<ToyDto>{new ToyDto{Name="Lego",Amount=100} } },
@@ -45,7 +49,15 @@ namespace SampleState
         /// <returns>A collection of listeners.</returns>
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
         {
-            return this.CreateServiceRemotingReplicaListeners();
+            //use native serialization
+            //return this.CreateServiceRemotingReplicaListeners();
+
+            //use bson serialization
+            return new[]
+            {
+                new ServiceReplicaListener((c) =>new FabricTransportServiceRemotingListener(c, this,
+                    serializationProvider:new BsonSerializationProvider()))
+            };
         }
 
         //protected override Task RunAsync(CancellationToken cancellationToken)
@@ -208,46 +220,46 @@ namespace SampleState
             return true;
         }
 
-        protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, CancellationToken cancellationToken)
-        {
-            ServiceEventSource.Current.ServiceMessage(Context, "OnDataLoss Invoked!");
-            this.SetupBackupManager();
+        //protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, CancellationToken cancellationToken)
+        //{
+        //    ServiceEventSource.Current.ServiceMessage(Context, "OnDataLoss Invoked!");
+        //    this.SetupBackupManager();
 
-            try
-            {
-                string backupFolder;
+        //    try
+        //    {
+        //        string backupFolder;
 
-                if (this.backupStorageType == BackupManagerType.None)
-                {
-                    //since we have no backup configured, we return false to indicate
-                    //that state has not changed. This replica will become the basis
-                    //for future replica builds
-                    return false;
-                }
-                else
-                {
-                    backupFolder = await this.backupManager.RestoreLatestBackupToTempLocation(cancellationToken);
-                }
+        //        if (this.backupStorageType == BackupManagerType.None)
+        //        {
+        //            //since we have no backup configured, we return false to indicate
+        //            //that state has not changed. This replica will become the basis
+        //            //for future replica builds
+        //            return false;
+        //        }
+        //        else
+        //        {
+        //            backupFolder = await this.backupManager.RestoreLatestBackupToTempLocation(cancellationToken);
+        //        }
 
-                ServiceEventSource.Current.ServiceMessage(Context, "Restoration Folder Path " + backupFolder);
+        //        ServiceEventSource.Current.ServiceMessage(Context, "Restoration Folder Path " + backupFolder);
 
-                RestoreDescription restoreRescription = new RestoreDescription(backupFolder, RestorePolicy.Force);
+        //        RestoreDescription restoreRescription = new RestoreDescription(backupFolder, RestorePolicy.Force);
 
-                await restoreCtx.RestoreAsync(restoreRescription, cancellationToken);
+        //        await restoreCtx.RestoreAsync(restoreRescription, cancellationToken);
 
-                ServiceEventSource.Current.ServiceMessage(Context, "Restore completed");
+        //        ServiceEventSource.Current.ServiceMessage(Context, "Restore completed");
 
-                DirectoryInfo tempRestoreDirectory = new DirectoryInfo(backupFolder);
-                tempRestoreDirectory.Delete(true);
+        //        DirectoryInfo tempRestoreDirectory = new DirectoryInfo(backupFolder);
+        //        tempRestoreDirectory.Delete(true);
 
-                return true;
-            }
-            catch (Exception e)
-            {
-                ServiceEventSource.Current.ServiceMessage(Context, "Restoration failed: " + "{0} {1}" + e.GetType() + e.Message);
+        //        return true;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        ServiceEventSource.Current.ServiceMessage(Context, "Restoration failed: " + "{0} {1}" + e.GetType() + e.Message);
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
     }
 }

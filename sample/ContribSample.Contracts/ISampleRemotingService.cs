@@ -8,6 +8,6 @@ namespace ContribSample.Contracts
 {
     public interface ISampleRemotingService : IService
     {
-        Task<List<PeopleDto>> GetPeoplesAsync();
+        Task<List<PeopleDto>> GetPeoplesAsync(FilterDto filter);
     }
 }

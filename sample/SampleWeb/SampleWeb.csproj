@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Common\Common.csproj" />
+    <ProjectReference Include="..\..\src\SerializationProvider\SerializationProvider.csproj" />
     <ProjectReference Include="..\ContribSample.Contracts\ContribSample.Contracts.csproj" />
   </ItemGroup>
 </Project>

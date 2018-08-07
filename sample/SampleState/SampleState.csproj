@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\SerializationProvider\SerializationProvider.csproj" />
     <ProjectReference Include="..\..\src\StateBackupManager\StateBackupManager.csproj" />
     <ProjectReference Include="..\ContribSample.Contracts\ContribSample.Contracts.csproj" />
   </ItemGroup>
