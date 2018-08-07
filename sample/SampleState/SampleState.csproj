@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\StateBackupManager\StateBackupManager.csproj" />
+    <ProjectReference Include="..\ContribSample.Contracts\ContribSample.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,22 +7,34 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using ContribSample.Contracts;
 using Microsoft.ServiceFabric.Data;
 using Microsoft.ServiceFabric.Data.Collections;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
 using ServiceFabricContrib;
+using Microsoft.ServiceFabric.Services.Remoting.Runtime;
+using Microsoft.ServiceFabric.Services.Remoting;
 
 namespace SampleState
 {
     /// <summary>
     /// An instance of this class is created for each service replica by the Service Fabric runtime.
     /// </summary>
-    internal sealed class SampleState : StatefulService
+    internal sealed class SampleState : StatefulService, ISampleRemotingService
     {
         public SampleState(StatefulServiceContext context)
             : base(context)
         { }
+
+        public Task<List<PeopleDto>> GetPeoplesAsync()
+        {
+            return Task.FromResult(new List<PeopleDto>
+            {
+                new PeopleDto{Name ="abc",Age =1,Toys=new List<ToyDto>{new ToyDto{Name="Lego",Amount=100} } },
+                new PeopleDto{Name="efg",Age=2,Toys=new List<ToyDto>{new ToyDto{Name="Lego",Amount=50} }}
+            });
+        }
 
         /// <summary>
         /// Optional override to create listeners (e.g., HTTP, Service Remoting, WCF, etc.) for this service replica to handle client or user requests.
@@ -33,25 +45,25 @@ namespace SampleState
         /// <returns>A collection of listeners.</returns>
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
         {
-            return new ServiceReplicaListener[0];
+            return this.CreateServiceRemotingReplicaListeners();
         }
 
-        protected override Task RunAsync(CancellationToken cancellationToken)
-        {
-            try
-            {
-                ServiceEventSource.Current.ServiceMessage(Context, "inside RunAsync for SampleState Service");
+        //protected override Task RunAsync(CancellationToken cancellationToken)
+        //{
+        //    try
+        //    {
+        //        ServiceEventSource.Current.ServiceMessage(Context, "inside RunAsync for SampleState Service");
 
-                return Task.WhenAll(
-                    this.PeriodicCounter(cancellationToken),
-                    this.PeriodicTakeBackupAsync(cancellationToken));
-            }
-            catch (Exception e)
-            {
-                ServiceEventSource.Current.ServiceMessage(Context, "RunAsync Failed, {0}", e);
-                throw;
-            }
-        }
+        //        return Task.WhenAll(
+        //            this.PeriodicCounter(cancellationToken),
+        //            this.PeriodicTakeBackupAsync(cancellationToken));
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        ServiceEventSource.Current.ServiceMessage(Context, "RunAsync Failed, {0}", e);
+        //        throw;
+        //    }
+        //}
 
         /// <summary>
         /// This is the main entry point for your service replica.

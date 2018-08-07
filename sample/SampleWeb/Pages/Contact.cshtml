@@ -6,6 +6,21 @@
 <h2>@ViewData["Title"]</h2>
 <h3>@Model.Message</h3>
 
+<ul>
+    @foreach (var people in Model.Peoples)
+    {
+        <li>
+            Name: @people.Name  Age: @people.Age
+            <ul>
+                @foreach (var toy in people.Toys)
+                {
+                    <li>Name: @toy.Name  Amount: @toy.Amount</li>
+                }
+            </ul>
+        </li>
+    }
+</ul>
+
 <address>
     One Microsoft Way<br />
     Redmond, WA 98052-6399<br />
