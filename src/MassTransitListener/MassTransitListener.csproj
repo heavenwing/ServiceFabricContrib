@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
@@ -11,8 +11,8 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric masstransit</PackageTags>
-    <Version>1.0.10</Version>
-    <PackageReleaseNotes>using Service Fabric v3.2.162</PackageReleaseNotes>
+    <Version>1.0.11</Version>
+    <PackageReleaseNotes>using Service Fabric v3.2.187</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -20,8 +20,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit" Version="5.1.4" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.2.162" />
+    <PackageReference Include="MassTransit" Version="5.1.5" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.2.187" />
   </ItemGroup>
 
 </Project>

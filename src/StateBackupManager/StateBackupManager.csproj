@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
     <AssemblyName>ServiceFabricContrib.StateBackupManager</AssemblyName>
     <RootNamespace>ServiceFabricContrib</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -12,20 +12,14 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric</PackageTags>
     <Configurations>Debug;Release</Configurations>
-    <PackageReleaseNotes>using Service Fabric v3.2.162</PackageReleaseNotes>
-    <Version>1.0.5</Version>
+    <PackageReleaseNotes>using Service Fabric v3.2.187</PackageReleaseNotes>
+    <Version>1.0.6</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.ServiceFabric.Data" Version="3.2.162" />
-    <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
+    <PackageReference Include="Microsoft.ServiceFabric.Data" Version="3.2.187" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.2" />
+    <PackageReference Include="Minio" Version="2.0.5" />
   </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net452'">
-    <PackageReference Include="Minio" Version="1.1.1" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Minio.NetCore" Version="1.1.1" />
-  </ItemGroup>
+ 
 </Project>
