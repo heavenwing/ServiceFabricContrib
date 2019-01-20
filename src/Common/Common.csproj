@@ -4,16 +4,18 @@
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <RootNamespace>ServiceFabricContrib</RootNamespace>
     <AssemblyName>ServiceFabricContrib.Common</AssemblyName>
-    <Authors>heavenwing</Authors>
-    <Company>heavenwing</Company>
-    <Product>ServiceFabricContrib</Product>
+    <Authors>Yongguang Zhu</Authors>
+    <Company>MS SERVICES APPS</Company>
+    <Product>Service Fabric Contribution Library</Product>
     <PackageProjectUrl>https://github.com/heavenwing/ServiceFabricContrib</PackageProjectUrl>
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.22</Version>
-    <PackageReleaseNotes>1.0.22 add base classes of RemotingService</PackageReleaseNotes>
+    <Version>1.0.23</Version>
+    <PackageReleaseNotes>re-publish with new id</PackageReleaseNotes>
+    <PackageId>ServiceFabric.Contrib.Common</PackageId>
+    <Description>Service Fabric Contribution Common Library</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

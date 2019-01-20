@@ -1,18 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>ServiceFabricContrib.MassTransitListener</AssemblyName>
     <RootNamespace>ServiceFabricContrib</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>heavenwing</Authors>
-    <Company>heavenwing</Company>
+    <Authors>Yongguang Zhu</Authors>
+    <Company>MS SERVICES APPS</Company>
     <PackageProjectUrl>https://github.com/heavenwing/ServiceFabricContrib</PackageProjectUrl>
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric masstransit</PackageTags>
-    <Version>1.0.11</Version>
-    <PackageReleaseNotes>using Service Fabric v3.2.187</PackageReleaseNotes>
+    <Version>1.0.12</Version>
+    <PackageReleaseNotes>re-publish with new id</PackageReleaseNotes>
+    <Product>Service Fabric Contribution Library</Product>
+    <Description>Service Fabric Contribution MassTransitListener Library</Description>
+    <PackageId>ServiceFabric.Contrib.MassTransitListener</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -20,8 +23,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit" Version="5.1.5" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.2.187" />
+    <PackageReference Include="MassTransit" Version="5.2.3" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.3.624" />
   </ItemGroup>
 
 </Project>

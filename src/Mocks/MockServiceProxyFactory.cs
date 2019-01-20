@@ -33,5 +33,10 @@ namespace ServiceFabricContrib
         {
             mockServiceLookupTable.AddOrUpdate(mockServiceUri, mockService, (uri, service) => mockService);
         }
+
+        public TServiceInterface CreateNonIServiceProxy<TServiceInterface>(Uri serviceUri, ServicePartitionKey partitionKey = null, TargetReplicaSelector targetReplicaSelector = TargetReplicaSelector.Default, string listenerName = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

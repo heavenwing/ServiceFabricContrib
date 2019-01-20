@@ -1,25 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>ServiceFabricContrib.StateBackupManager</AssemblyName>
     <RootNamespace>ServiceFabricContrib</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>heavenwing</Authors>
-    <Product>ServiceFabricContrib</Product>
+    <Authors>Yongguang Zhu</Authors>
+    <Product>Service Fabric Contribution Library</Product>
     <PackageProjectUrl>https://github.com/heavenwing/ServiceFabricContrib</PackageProjectUrl>
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>servicefabric</PackageTags>
+    <PackageTags>servicefabric backup</PackageTags>
     <Configurations>Debug;Release</Configurations>
-    <PackageReleaseNotes>using Service Fabric v3.2.187</PackageReleaseNotes>
-    <Version>1.0.6</Version>
+    <PackageReleaseNotes>re-publish with new id</PackageReleaseNotes>
+    <Version>1.0.7</Version>
+    <Company>MS SERVICES APPS</Company>
+    <Description>Service Fabric Contribution StateBackupManager Library</Description>
+    <PackageId>ServiceFabric.Contrib.StateBackupManager</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.ServiceFabric.Data" Version="3.2.187" />
-    <PackageReference Include="WindowsAzure.Storage" Version="9.3.2" />
-    <PackageReference Include="Minio" Version="2.0.5" />
+    <PackageReference Include="Microsoft.ServiceFabric.Data" Version="3.3.624" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+    <PackageReference Include="Minio" Version="3.0.2" />
   </ItemGroup>
  
 </Project>

@@ -17,9 +17,7 @@ namespace ServiceFabricContrib
         private IDictionary<Type, Func<Uri, object>> createFunctions = new Dictionary<Type, Func<Uri, object>>();
 
         public Type ServiceInterfaceType { get; private set; }
-#if NET452
-        public Microsoft.ServiceFabric.Services.Remoting.V1.Client.IServiceRemotingPartitionClient ServicePartitionClient { get; private set; }
-#endif
+        public Microsoft.ServiceFabric.Services.Remoting.V2.Client.IServiceRemotingPartitionClient ServicePartitionClient { get; private set; }
         public Microsoft.ServiceFabric.Services.Remoting.V2.Client.IServiceRemotingPartitionClient ServicePartitionClient2 { get; private set; }
 
 
