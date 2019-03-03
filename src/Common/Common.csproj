@@ -12,8 +12,8 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.24</Version>
-    <PackageReleaseNotes>re-publish with new id;add extensions for collection</PackageReleaseNotes>
+    <Version>1.0.26</Version>
+    <PackageReleaseNotes>added RemotingResult</PackageReleaseNotes>
     <PackageId>ServiceFabric.Contrib.Common</PackageId>
     <Description>Service Fabric Contribution Common Library</Description>
   </PropertyGroup>
