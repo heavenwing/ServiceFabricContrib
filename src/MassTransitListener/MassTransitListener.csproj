@@ -11,8 +11,8 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>servicefabric masstransit</PackageTags>
-    <Version>1.0.12</Version>
-    <PackageReleaseNotes>re-publish with new id</PackageReleaseNotes>
+    <Version>1.0.13</Version>
+    <PackageReleaseNotes>upgraded SF nuget to 6.5.639</PackageReleaseNotes>
     <Product>Service Fabric Contribution Library</Product>
     <Description>Service Fabric Contribution MassTransitListener Library</Description>
     <PackageId>ServiceFabric.Contrib.MassTransitListener</PackageId>
@@ -23,8 +23,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit" Version="5.2.3" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.3.624" />
+    <PackageReference Include="MassTransit" Version="5.5.2" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.4.639" />
   </ItemGroup>
 
 </Project>

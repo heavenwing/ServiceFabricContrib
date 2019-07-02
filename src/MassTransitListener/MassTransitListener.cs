@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace ServiceFabricContrib
 {
+    /// <summary>
+    /// Listener for MassTrans
+    /// NOTE: Only use in stateless service
+    /// </summary>
     public class MassTransitListener : ICommunicationListener
     {
         private readonly IBusControl _busControl;

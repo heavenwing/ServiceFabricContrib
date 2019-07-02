@@ -8,13 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.ServiceFabric" Version="6.4.624" />
-    <PackageReference Include="Microsoft.ServiceFabric.Data" Version="3.3.624" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.3.624" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services.Remoting" Version="3.3.624" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="5.5.2" />
+    <PackageReference Include="Microsoft.ServiceFabric" Version="6.5.639" />
+    <PackageReference Include="Microsoft.ServiceFabric.Data" Version="3.4.639" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.4.639" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services.Remoting" Version="3.4.639" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\MassTransitListener\MassTransitListener.csproj" />
     <ProjectReference Include="..\..\src\SerializationProvider\SerializationProvider.csproj" />
     <ProjectReference Include="..\..\src\StateBackupManager\StateBackupManager.csproj" />
     <ProjectReference Include="..\ContribSample.Contracts\ContribSample.Contracts.csproj" />

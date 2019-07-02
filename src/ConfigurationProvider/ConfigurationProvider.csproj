@@ -12,8 +12,8 @@
     <RepositoryUrl>https://github.com/heavenwing/ServiceFabricContrib</RepositoryUrl>
     <PackageTags>servicefabric configuration</PackageTags>
     <Description>Service Fabric Contribution ConfigurationProvider Library</Description>
-    <Version>1.0.18</Version>
-    <PackageReleaseNotes>re-publish with new id</PackageReleaseNotes>
+    <Version>1.0.19</Version>
+    <PackageReleaseNotes>upgraded SF nuget to 6.5.639</PackageReleaseNotes>
     <PackageId>ServiceFabric.Contrib.ConfigurationProvider</PackageId>
   </PropertyGroup>
 
@@ -22,13 +22,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.ServiceFabric" Version="6.4.624" />
+    <PackageReference Include="Microsoft.ServiceFabric" Version="6.5.639" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.2.0" />
   </ItemGroup>

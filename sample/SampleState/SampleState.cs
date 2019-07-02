@@ -16,6 +16,7 @@ using ServiceFabricContrib;
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting;
 using Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime;
+using MassTransit;
 
 namespace SampleState
 {
@@ -49,33 +50,107 @@ namespace SampleState
         /// <returns>A collection of listeners.</returns>
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
         {
-            //use native serialization
-            //return this.CreateServiceRemotingReplicaListeners();
-
             //use bson serialization
             return new[]
             {
+                //MassTransitListener can not be used in stateful service 
+                //new ServiceReplicaListener(_ => new MassTransitListener(bus), "masstransit"),
                 new ServiceReplicaListener((c) =>new FabricTransportServiceRemotingListener(c, this,
                     serializationProvider:new BsonSerializationProvider()))
             };
         }
 
-        //protected override Task RunAsync(CancellationToken cancellationToken)
+        //private IBusControl _bus;
+        //protected override async Task OnOpenAsync(ReplicaOpenMode openMode, CancellationToken cancellationToken)
         //{
-        //    try
-        //    {
-        //        ServiceEventSource.Current.ServiceMessage(Context, "inside RunAsync for SampleState Service");
+        //    await base.OnOpenAsync(openMode, cancellationToken);
 
-        //        return Task.WhenAll(
-        //            this.PeriodicCounter(cancellationToken),
-        //            this.PeriodicTakeBackupAsync(cancellationToken));
-        //    }
-        //    catch (Exception e)
+        //    ServiceEventSource.Current.ServiceMessage(Context, "Starting Masstrasit...");
+        //    //ref: https://stackoverflow.com/a/41371221
+        //    _bus = Bus.Factory.CreateUsingRabbitMq(cfg =>
         //    {
-        //        ServiceEventSource.Current.ServiceMessage(Context, "RunAsync Failed, {0}", e);
-        //        throw;
-        //    }
+        //        var host = cfg.Host(new Uri("rabbitmq://localhost"), h =>
+        //        {
+        //            h.Username("guest");
+        //            h.Password("guest");
+        //        });
+
+        //        cfg.ReceiveEndpoint(host, "ServiceFabricContrib.SampleState", c =>
+        //        {
+        //            c.Handler<FilterDto>(context =>
+        //            {
+        //                ServiceEventSource.Current.ServiceMessage(Context, $"Received: {context.Message.Search}");
+        //                return Task.CompletedTask;
+        //            });
+        //        });
+        //    });
+        //    await _bus.StartAsync();
+        //    ServiceEventSource.Current.ServiceMessage(Context, "Started Masstrasit...");
         //}
+
+        //protected override async Task OnCloseAsync(CancellationToken cancellationToken)
+        //{
+        //    ServiceEventSource.Current.ServiceMessage(Context, "Stoping Masstrasit...");
+        //    await _bus?.StopAsync();
+        //    ServiceEventSource.Current.ServiceMessage(Context, "Stoped Masstrasit...");
+
+        //    await base.OnCloseAsync(cancellationToken);
+        //}
+
+        protected override async Task RunAsync(CancellationToken cancellationToken)
+        {
+            try
+            {
+                ServiceEventSource.Current.ServiceMessage(Context, "inside RunAsync for SampleState Service");
+
+                //return Task.WhenAll(
+                //    this.PeriodicCounter(cancellationToken),
+                //    this.PeriodicTakeBackupAsync(cancellationToken));
+
+                //ref: https://stackoverflow.com/a/41371221
+                //NOTE use Run instead of Open for primary replica
+                var bus = Bus.Factory.CreateUsingRabbitMq(cfg =>
+                {
+                    var host = cfg.Host(new Uri("rabbitmq://localhost"), h =>
+                    {
+                        h.Username("guest");
+                        h.Password("guest");
+                    });
+
+                    cfg.ReceiveEndpoint(host, "ServiceFabricContrib.SampleState", c =>
+                    {
+                        c.Handler<FilterDto>(context =>
+                        {
+                            ServiceEventSource.Current.ServiceMessage(Context, $"Received: {context.Message.Search}");
+                            return Task.CompletedTask;
+                        });
+                    });
+                });
+                await bus.StartAsync();
+
+                while (true)
+                {
+                    if (cancellationToken.IsCancellationRequested)
+                    {
+                        //Service Fabric wants us to stop
+                        await bus.StopAsync();
+
+                        cancellationToken.ThrowIfCancellationRequested();
+                    }
+
+                    await Task.Delay(TimeSpan.FromSeconds(1));
+                }
+            }
+            catch (OperationCanceledException e)
+            {
+                ServiceEventSource.Current.ServiceMessage(Context, "RunAsync Stoped, {0}", e);
+            }
+            catch (Exception e)
+            {
+                ServiceEventSource.Current.ServiceMessage(Context, "RunAsync Failed, {0}", e);
+                throw;
+            }
+        }
 
         /// <summary>
         /// This is the main entry point for your service replica.
